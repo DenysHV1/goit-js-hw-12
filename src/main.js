@@ -32,6 +32,7 @@ const elementForSearch = async event => {
     foundValue = event.target.elements.choiceSearch.value.toLowerCase().trim();
     //
     page = 1;
+	galleryListEl.innerHTML = '';
     //
     if (!foundValue) {
       iziToast.error({ message: 'Please enter a search word.' });
