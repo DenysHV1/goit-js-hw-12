@@ -18,11 +18,9 @@ const loadMoreBtnEl = document.querySelector('.load-more-btn-js');
 
 let lightbox = new SimpleLightbox('.gallery-list a', {});
 
-
 let page = 1;
 let cardHeight = 0;
 let foundValue = '';
-
 
 //! first function
 const elementForSearch = async event => {
@@ -31,9 +29,7 @@ const elementForSearch = async event => {
     //
     event.preventDefault();
     //
-    foundValue = event.target.elements.choiceSearch.value
-      .toLowerCase()
-      .trim();
+    foundValue = event.target.elements.choiceSearch.value.toLowerCase().trim();
     //
     page = 1;
     //
@@ -47,7 +43,7 @@ const elementForSearch = async event => {
     const response = await search(foundValue, page);
     //
     if (response.data.totalHits === 0) {
-		loadMoreBtnEl.classList.add('is-hidden');
+      loadMoreBtnEl.classList.add('is-hidden');
       iziToast.info({
         message:
           'Sorry, there are no images matching your search query. Please try again!',
@@ -62,7 +58,7 @@ const elementForSearch = async event => {
     cardHeight = galleryCardEl.getBoundingClientRect().height;
     //
     if (response.data.totalHits > 15) {
-		loadMoreBtnEl.classList.remove('is-hidden');
+      loadMoreBtnEl.classList.remove('is-hidden');
     }
     //
     lightbox.refresh();
@@ -73,7 +69,7 @@ const elementForSearch = async event => {
   } catch (err) {
     iziToast.error({
       message: err.message,
-	  messageColor: '#fff',
+      messageColor: '#fff',
       position: 'topRight',
       color: '#ef4040',
       maxWidth: '350px',
@@ -84,15 +80,10 @@ const elementForSearch = async event => {
     loaderEl.style.display = 'none';
     formEl.reset();
   }
-
 };
-
-
-
 
 //! second function
 const onLoadMoreClick = async () => {
-
   //todo
   try {
     page += 1;
@@ -115,7 +106,7 @@ const onLoadMoreClick = async () => {
     loadMoreBtnEl.classList.remove('is-hidden');
     //
     if (page === Math.ceil(response.data.totalHits / 15)) {
-		loadMoreBtnEl.classList.add('is-hidden');
+      loadMoreBtnEl.classList.add('is-hidden');
       iziToast.warning({
         title: 'Info',
         message: 'Were sorry, but you have reached the end of search results.',
@@ -127,7 +118,7 @@ const onLoadMoreClick = async () => {
   } catch (err) {
     iziToast.error({
       message: err.message,
-	  messageColor: '#fff',
+      messageColor: '#fff',
       position: 'topRight',
       color: '#ef4040',
       maxWidth: '350px',
@@ -137,7 +128,6 @@ const onLoadMoreClick = async () => {
   } finally {
     loaderEl.style.display = 'none';
   }
-
 };
 
 formEl.addEventListener('submit', elementForSearch);

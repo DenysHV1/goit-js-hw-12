@@ -1,4 +1,3 @@
-
 export function renderMarkup(arr, galleryEl) {
   const markup = arr
     .map(
