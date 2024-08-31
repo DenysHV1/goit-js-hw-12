@@ -60,7 +60,9 @@ const elementForSearch = async event => {
     //
     if (response.data.totalHits > 15) {
       loadMoreBtnEl.classList.remove('is-hidden');
-    }
+    }else{
+		loadMoreBtnEl.classList.add('is-hidden');
+	}
     //
     lightbox.refresh();
     //
