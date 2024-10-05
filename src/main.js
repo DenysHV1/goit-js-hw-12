@@ -97,6 +97,7 @@ const onLoadMoreClick = async () => {
     //
     const response = await search(foundValue, page);
     //
+
     renderMarkup(response.data.hits, galleryListEl);
     //
     lightbox.refresh();
