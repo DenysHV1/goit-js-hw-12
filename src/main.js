@@ -105,7 +105,7 @@ const onLoadMoreClick = async () => {
       top: cardHeight * 2,
       behavior: 'smooth',
     });
-    //
+    
     loadMoreBtnEl.classList.remove('is-hidden');
     //
     if (page === Math.ceil(response.data.totalHits / 15)) {
